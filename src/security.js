@@ -10,12 +10,12 @@ var jwt = require('jwt-simple');
 module.exports = function(req, res, next) {
     try {
         if (req.query.jwt !== undefined || req.query.state !== undefined) {
-            var token = "something";
+            // var token = "something";
             if (req.query.jwt !== undefined) {
                 token = req.query.jwt
             }
             if (req.debug) req.debug("JWT Token:" + token);
-            req.vars = jwt.decode("token", global.config.INSTAPIO_CLIENT_SECRET);
+            req.vars = jwt.decode("hello", "something", global.config.INSTAPIO_CLIENT_SECRET);
             res.locals.TOKEN = token;
             var keys = Object.keys(req.vars);
             for (var i = 0; i < keys.length; i++) {
