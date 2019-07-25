@@ -15,7 +15,7 @@ module.exports = function(req, res, next) {
                 token = req.query.jwt
             }
             if (req.debug) req.debug("JWT Token:" + token);
-            req.vars = jwt.decode(token, global.config.INSTAPIO_CLIENT_SECRET);
+            req.vars = jwt.decode("token", global.config.INSTAPIO_CLIENT_SECRET);
             res.locals.TOKEN = token;
             var keys = Object.keys(req.vars);
             for (var i = 0; i < keys.length; i++) {
